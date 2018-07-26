@@ -30,6 +30,7 @@ module.exports = (host, method, port) => {
 			const req = https.request(options, res => {
 				let { valid_from, valid_to } = res.connection.getPeerCertificate();
 				resolve({
+					host: options.host,
 					valid_from: valid_from,
 					valid_to: valid_to,
 					days_remaining: daysBetween(new Date(), new Date(valid_to))
